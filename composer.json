@@ -1,0 +1,27 @@
+{
+    "name": "vierwd/composer-githooks",
+    "description": "Set the githooks directory after composer installation",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Vock",
+            "email": "robert.vock@4wdmedia.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "composer-plugin-api": "^1.1"
+    },
+    "preferred-install": {
+        "*": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vierwd\\ComposerGithooks\\": "src"
+        }
+    },
+    "extra": {
+        "class": "Vierwd\\ComposerGithooks\\ComposerPlugin"
+    }
+}
