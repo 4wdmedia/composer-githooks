@@ -40,9 +40,9 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface {
 	 */
 	public function installHooks(Event $event): void {
 		// only install githooks on live-server. Dev-Version has correct githooks set up as git template
-		// if (!empty($_SERVER['VIERWD_CONFIG'])) {
-		// 	return;
-		// }
+		if (!empty($_SERVER['VIERWD_CONFIG'])) {
+			return;
+		}
 
 		// only setup githooks, if this plugin is part of the package.
 		// It will not be part of the package if it is currently being uninstalled
