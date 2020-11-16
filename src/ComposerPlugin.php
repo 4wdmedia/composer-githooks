@@ -19,9 +19,17 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface {
 	/** @var \Composer\IO\IOInterface */
 	protected $io;
 
-	public function activate(Composer $composer, IOInterface $io): void {
+	public function activate(Composer $composer, IOInterface $io) {
 		$this->package = $composer->getPackage();
 		$this->io = $io;
+	}
+
+	public function deactivate(Composer $composer, IOInterface $io) {
+		// nothing to do, just implement PluginInterface
+	}
+
+	public function uninstall(Composer $composer, IOInterface $io) {
+		// nothing to do, just implement PluginInterface
 	}
 
 	/**
