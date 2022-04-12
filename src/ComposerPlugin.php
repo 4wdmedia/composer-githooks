@@ -71,7 +71,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
 	protected function checkGitVersion(): bool {
 		// Check git-version
-		$process = new Process('git --version');
+		$process = new Process(['git', '--version']);
 		$process->run();
 		if (!$process->isSuccessful()) {
 			$this->io->warning('vierwd/composer-githooks: Could not execute git');
@@ -88,7 +88,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface {
 	}
 
 	protected function isHookPathSet(): bool {
-		$process = new Process('git config core.hooksPath');
+		$process = new Process(['git', 'config', 'core.hooksPath']);
 		$process->run();
 		if (trim($process->getOutput()) === 'githooks/') {
 			// nothing to do. githooks directory is already set
@@ -101,7 +101,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
 	protected function setHookPath(): void {
 		$this->io->notice('vierwd/composer-githooks: Enabling hooks');
-		$process = new Process('git config core.hooksPath githooks/');
+		$process = new Process(['git', 'config', 'core.hooksPath', 'githooks/']);
 		$process->run();
 		if ($process->isSuccessful()) {
 			$this->io->notice('vierwd/composer-githooks: Success.');
